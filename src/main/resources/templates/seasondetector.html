@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Season Detector</title>
+</head>
+<body>
+    <form action="/season" method="POST">
+        <label for="month">Input month</label>
+        <input type="text" name="month" id="month">
+        <button type="submit">Detect season</button>
+    </form>
+
+
+    <p th:if="${result != null}">
+        <span th:if="${result.error.name().equals('ok')}">
+            Season is <span th:text="${result.season.name()}"></span>
+        </span>
+
+        <span th:if="${result.error.name() != 'ok'}">
+            Error: <span th:text="${result.error.name()}"></span>
+        </span>
+    </p>
+</body>
+</html>
